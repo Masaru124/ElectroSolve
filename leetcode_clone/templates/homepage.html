@@ -1,0 +1,12 @@
+{% extends 'base.html' %}  <!-- Extend the base template -->
+{% block content %}  <!-- Start the content block -->
+<h1>Welcome to the LeetCode Clone</h1>
+<nav>
+    <ul>
+        <li><a href="{% url 'problem_list' %}">Problems</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+    </ul>
+</nav>
+{% endblock %}  <!-- End the content block -->
