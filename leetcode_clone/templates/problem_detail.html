@@ -1,25 +1,53 @@
-{% extends 'base.html' %}  <!-- Extend the base template -->
-{% block content %}  <!-- Start the content block -->
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>{{ problem.title }}</h1>
 <p><strong>Description:</strong> {{ problem.description }}</p>
 <p><strong>Difficulty:</strong> {{ problem.get_difficulty_display }}</p>
 
 <form method="POST" action="{% url 'check_answer' problem.id %}">
     {% csrf_token %}
+
     <h2>Options:</h2>
     <ul>
-        <li><input type="radio" name="answer" value="A"> {{ problem.option_a }}</li>
-        <li><input type="radio" name="answer" value="B"> {{ problem.option_b }}</li>
-        <li><input type="radio" name="answer" value="C"> {{ problem.option_c }}</li>
-        <li><input type="radio" name="answer" value="D"> {{ problem.option_d }}</li>
+        <li>
+            <label>
+                <input type="radio" name="answer" value="A" {% if user_answer == 'A' %}checked{% endif %}> 
+                {{ option_a }}
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" name="answer" value="B" {% if user_answer == 'B' %}checked{% endif %}> 
+                {{ option_b }}
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" name="answer" value="C" {% if user_answer == 'C' %}checked{% endif %}> 
+                {{ option_c }}
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" name="answer" value="D" {% if user_answer == 'D' %}checked{% endif %}> 
+                {{ option_d }}
+            </label>
+        </li>
     </ul>
+
     <button type="submit">Submit Answer</button>
 </form>
 
 {% if solution_display is not None %}
     <h3>Solution:</h3>
     <p>{{ problem.solution }}</p>
-<p>Your answer was {% if solution_display %}correct{% else %}incorrect{% endif %}.</p>
 
+    {% if solution_display %}
+        <p>Your answer was <strong>correct</strong>.</p>
+    {% else %}
+        <p>Your answer was <strong>incorrect</strong>. The correct answer is <strong>{{ problem.correct_answer }}</strong>.</p>
+    {% endif %}
 {% endif %}
-{% endblock %}  <!-- End the content block -->
+
+{% endblock %}

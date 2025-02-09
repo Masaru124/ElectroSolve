@@ -10,10 +10,14 @@ def problem_list(request):
 
 def problem_detail(request, problem_id):
     problem = Problem.objects.get(id=problem_id)  # Fetch a specific problem
+    
+    # Pass the individual options fields instead of 'options'
     return render(request, 'problem_detail.html', {
         'problem': problem,
-        'solutions': problem.solutions,
-        'options': problem.options,
+        'option_a': problem.option_a,
+        'option_b': problem.option_b,
+        'option_c': problem.option_c,
+        'option_d': problem.option_d,
     })
 
 def check_answer(request, problem_id):
@@ -24,10 +28,12 @@ def check_answer(request, problem_id):
         # Check if the selected answer is correct
         is_correct = (selected_answer == problem.correct_answer)
 
-        # Render the problem detail page with the solution display
+        # Pass the individual options fields here as well
         return render(request, 'problem_detail.html', {
             'problem': problem,
-            'solutions': problem.solutions,
-            'options': problem.options,
+            'option_a': problem.option_a,
+            'option_b': problem.option_b,
+            'option_c': problem.option_c,
+            'option_d': problem.option_d,
             'solution_display': is_correct,
         })
