@@ -1,17 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from .forms import Signup  # Import the Signup form from forms.py
 
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)  # Log the user in after registration
-            return redirect('homepage')  # Redirect to homepage after registration
-    else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+class SignupView(CreateView):
+    form_class = Signup  # Ensure this references the Signup form from forms.py
+    template_name = 'registration/registration.html'
+    success_url = reverse_lazy('login')
 
 def login(request):
     if request.method == 'POST':
