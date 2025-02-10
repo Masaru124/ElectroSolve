@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-</head>
-<body>
-    <h1>User Profile</h1>
-    <p>Welcome, {{ user.username }}!</p>
-    <a href="{% url 'logout' %}">Logout</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">User Profile</h1>
+    <div class="card" style="max-width: 600px; margin: auto;">
+        <div class="card-body">
+            <p class="card-text">Welcome, <strong>{{ user.username }}</strong>!</p>
+            <p class="card-text">Email: <strong>{{ user.email }}</strong></p>
+            <p class="card-text">Join Date: <strong>{{ user.date_joined }}</strong></p>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        <a href="{% url 'homepage' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

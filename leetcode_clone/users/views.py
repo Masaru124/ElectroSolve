@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth import login as auth_login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 
 def register(request):
@@ -25,3 +25,7 @@ def login(request):
 
 def profile(request):
     return render(request, 'profile.html')  # Render the profile template
+
+def user_logout(request):
+    logout(request)  # Log the user out
+    return redirect('homepage')  # Redirect to homepage after logout

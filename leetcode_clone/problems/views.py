@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from .models import Problem
 
 def homepage(request):
@@ -37,3 +38,16 @@ def check_answer(request, problem_id):
             'option_d': problem.option_d,
             'solution_display': is_correct,
         })
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('homepage')  # Redirect to homepage after login
+        else:
+            # Handle invalid login
+            return render(request, 'login.html', {'error': 'Invalid username or password'})
+    return render(request, 'login.html')

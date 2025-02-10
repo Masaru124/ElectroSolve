@@ -1,12 +1,49 @@
-{% extends 'base.html' %}  <!-- Extend the base template -->
-{% block content %}  <!-- Start the content block -->
-<h1>Welcome to the LeetCode Clone</h1>
-<nav>
-    <ul>
-        <li><a href="{% url 'problem_list' %}">Problems</a></li>
-        <li><a href="{% url 'register' %}">Register</a></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
-        <li><a href="{% url 'profile' %}">Profile</a></li>
-    </ul>
-</nav>
-{% endblock %}  <!-- End the content block -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to the LeetCode Clone</h1>
+            <p class="lead">A New Way to Learn ECE</p>
+            <hr class="my-4">
+            <p>[Platform Name] is the best platform to help you enhance your skills, expand your knowledge, and prepare for technical challenges in Electrical and Computer Engineering.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Start Exploring</a>
+        </div>
+
+        <div class="my-5">
+            <h2>Explore our Tools</h2>
+            <p>Explore our well-organized tool to guide you in mastering core ECE topics. Whether you’re just starting or ready for advanced studies, we provide structure to help you make the next leap in your engineering career.</p>
+            <a class="btn btn-primary" href="#" role="button">Get Started</a>
+        </div>
+
+        <div class="my-5">
+            <h2>Problems, Community & Challenges</h2>
+            <p>Over 3,650+ technical problems and exercises for you to practice. Join a vast, active community of ECE enthusiasts and professionals who are all working towards mastering the field. Participate in regular challenges and contests to test your knowledge and earn rewards.</p>
+            <a class="btn btn-primary" href="{% url 'problem_list' %}" role="button">View Problems</a>
+        </div>
+
+        <div class="my-5">
+            <h2>Companies & Candidates</h2>
+            <p>Not only does [Platform Name] help candidates prepare for technical interviews and exams, but we also work with companies to identify top ECE talent. From sponsoring challenges to providing online assessments and training, we support businesses in hiring the best candidates.</p>
+            <a class="btn btn-primary" href="#" role="button">Business Opportunities</a>
+        </div>
+
+        <div class="my-5">
+            <h2>Development Tools for ECE Projects</h2>
+            <p>We support 10+ engineering and programming tools to help you work on embedded systems, microcontrollers, circuit design, and more. At [Platform Name], we are committed to developers, with powerful tools like CircuitSim, FPGA simulation, and virtual oscilloscope to help you develop, test, and debug your own projects.</p>
+            <a class="btn btn-primary" href="#" role="button">Explore Tools</a>
+        </div>
+
+        <div class="my-5">
+            <h2>Courses & Certification for ECE Professionals</h2>
+            <p>Take courses on various ECE topics such as digital circuits, signal processing, microcontroller programming, and data communication. Complete courses and receive certification to boost your career prospects.</p>
+            <a class="btn btn-primary" href="#" role="button">Get Started</a>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="my-5">
+            <p>Hello, {{ user.username }}!</p>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
