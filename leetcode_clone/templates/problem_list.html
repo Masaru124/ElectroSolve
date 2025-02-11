@@ -1,28 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extend the base template -->
 {% load static %}
+{% block content %}  <!-- Start the content block -->
 
-{% block content %}
 <div class="container mx-auto mt-10 px-4">
     <div class="w-full bg-gray-800 p-6 rounded-lg">
-        <h1 class="text-3xl font-bold text-center mb-4">Problem List</h1>
-        
-        <div class="text-lg text-gray-300">
-            <ul class="list-disc list-inside">
-                {% for problem in problems %}
-                    <li class="mb-2">
-                        <a href="{% url 'problem_detail' problem.id %}" class="text-lg text-blue-400 hover:underline">
-                            {{ problem.title }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-
-        <div class="text-center mt-4">
-            <a href="{% url 'problem_list' %}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                Back to Problems
-            </a>
+        <h2 class="text-xl font-bold mb-4">Problems</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-800">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 bg-gray-700 text-left">Problem Name</th>
+                        <th class="py-2 px-4 bg-gray-700 text-left">Type</th>
+                        <th class="py-2 px-4 bg-gray-700 text-left">Difficulty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for problem in problems %}
+                    <tr class="border-b border-gray-700">
+                        <td class="py-2 px-4">
+                            <a href="{% url 'problem_detail' problem.id %}" class="text-green-500 hover:underline">
+                                {{ problem.title }}
+                            </a>
+                        </td>
+                        <td class="py-2 px-4">{{ problem.type }}</td>
+                        <td class="py-2 px-4">{{ problem.difficulty }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="py-2 px-4 text-center text-gray-500">No problems available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-{% endblock %}
+
+{% endblock %}  <!-- End the content block -->
