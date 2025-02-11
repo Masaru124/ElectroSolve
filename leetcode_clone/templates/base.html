@@ -13,12 +13,32 @@
         <div class="flex items-center space-x-4">
             <i class="fas fa-book text-green-500 text-2xl"></i>
             <span class="ml-2 text-xl font-bold">LeetClone</span>
-            <a href="{% url 'homepage' %}" class="text-gray-300 hover:text-white">Home</a>
-            <a href="{% url 'problem_list' %}" class="text-gray-300 hover:text-white">Problems</a>
-            <a href="{% url 'contests' %}" class="text-gray-300 hover:text-white">Contests</a>
-            <a href="{% url 'discuss' %}" class="text-gray-300 hover:text-white">Discuss</a>
+            <a href="{% url 'homepage' %}" class="text-gray-300 hover:text-white">
+                <i class="fas fa-home">
+                </i>
+                Home</a>
+            <a href="{% url 'problem_list' %}" class="text-gray-300 hover:text-white">
+                <i class="fas fa-tasks">
+                </i>
+                Problems</a>
+            <a href="{% url 'contests' %}" class="text-gray-300 hover:text-white">
+                <i class="fas fa-trophy">
+                </i>
+                Contests</a>
+            <a href="{% url 'discuss' %}" class="text-gray-300 hover:text-white">
+                <i class="fas fa-comments">
+                </i>
+                Discuss</a>
         </div>
-        <a href="{% url 'login' %}" class="bg-green-500 text-white px-4 py-2 rounded">Sign In</a>
+        <div class="flex items-center space-x-4">
+            <a href="{% url 'profile' %}" >
+             <i class="fas fa-user">
+             </i>
+            </a>
+            <a href="{% url 'register' %}" class="bg-green-500 text-white px-4 py-2 rounded">
+             Sign In
+            </a>
+           </div>
     </nav>
     <div>
     {% block content %}

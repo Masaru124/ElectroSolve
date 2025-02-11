@@ -52,3 +52,6 @@ def contests(request):
 
 def discuss(request):
     return render(request,'discuss.html')
+
+def editprofile(request):
+    return render(request,'editprofile.html')
