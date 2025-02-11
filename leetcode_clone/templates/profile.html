@@ -1,19 +1,294 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<div class="container">
-    <h1 class="text-center">User Profile</h1>
-    <div class="card" style="max-width: 600px; margin: auto;">
-        <div class="card-body">
-            <p class="card-text">Welcome, <strong>{{ user.username }}</strong>!</p>
-            <p class="card-text">Email: <strong>{{ user.email }}</strong></p>
-            <p class="card-text">Join Date: <strong>{{ user.date_joined }}</strong></p>
-        </div>
+  <div class="max-w-5xl mx-auto p-4">
+   <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row items-center justify-between">
+    <div class="flex items-center space-x-4">
+     <img alt="Profile picture of John Developer" class="rounded-full border-4 border-green-500" height="100" src="https://storage.googleapis.com/a1aa/image/F8dvhv8fCTkfpO9U4Umf3BSZ4BD1wv0sD3S5EUBr83E.jpg" width="100"/>
+     <div>
+      <h1 class="text-2xl font-bold">
+       John Developer
+      </h1>
+      <p class="text-gray-400">
+       @johndeveloper
+      </p>
+      <p class="text-gray-400">
+       Full Stack Developer | Problem Solving Enthusiast
+      </p>
+      <div class="flex items-center space-x-2 text-gray-400 mt-2">
+       <span>
+        <i class="fas fa-trophy">
+        </i>
+        Rank: 12,453
+       </span>
+       <span>
+        <i class="fas fa-star">
+        </i>
+        2,345 Points
+       </span>
+       <span>
+        <i class="fas fa-calendar-alt">
+        </i>
+        Joined Mar 2024
+       </span>
+      </div>
+     </div>
     </div>
+    <div class="flex space-x-4 mt-4 md:mt-0">
+     <a href="{% url 'editprofile' %}" class="bg-green-500 text-white px-4 py-2 rounded">
+      Edit Profile
+     </a>
+     <a href="{% url 'logout' %}" class="bg-red-600 text-white px-4 py-2 rounded">
+        <i class="fas fa-sign-out-alt"></i>
+      Logout
+     </a>
+    </div>
+   </div>
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+    <div class="bg-gray-800 p-4 rounded-lg">
+     <div class="flex items-center space-x-2">
+      <i class="fas fa-book text-green-500">
+      </i>
+      <span class="text-lg font-bold">
+       Problems Solved
+      </span>
+     </div>
+     <p class="text-3xl font-bold mt-2">
+      324
+     </p>
+     <p class="text-gray-400">
+      Top 15%
+     </p>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg">
+     <div class="flex items-center space-x-2">
+      <i class="fas fa-medal text-yellow-500">
+      </i>
+      <span class="text-lg font-bold">
+       Contest Rating
+      </span>
+     </div>
+     <p class="text-3xl font-bold mt-2">
+      1856
+     </p>
+     <p class="text-gray-400">
+      Top 25%
+     </p>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg">
+     <div class="flex items-center space-x-2">
+      <i class="fas fa-bullseye text-blue-500">
+      </i>
+      <span class="text-lg font-bold">
+       Daily Streak
+      </span>
+     </div>
+     <p class="text-3xl font-bold mt-2">
+      42
+     </p>
+     <p class="text-gray-400">
+      Personal Best
+     </p>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg">
+     <div class="flex items-center space-x-2">
+      <i class="fas fa-share-alt text-purple-500">
+      </i>
+      <span class="text-lg font-bold">
+       Solutions Shared
+      </span>
+     </div>
+     <p class="text-3xl font-bold mt-2">
+      156
+     </p>
+     <p class="text-gray-400">
+      89 Upvotes
+     </p>
+    </div>
+   </div>
+   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6">
+    <div class="bg-gray-800 p-6 rounded-lg">
+     <h2 class="text-xl font-bold">
+      Problem Solving Progress
+     </h2>
+     <div class="mt-4">
+      <div class="flex justify-between text-gray-400">
+       <span>
+        Easy
+       </span>
+       <span>
+        195 / 475
+       </span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+       <div class="bg-green-500 h-2.5 rounded-full" style="width: 41%;">
+       </div>
+      </div>
+     </div>
+     <div class="mt-4">
+      <div class="flex justify-between text-gray-400">
+       <span>
+        Medium
+       </span>
+       <span>
+        110 / 950
+       </span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+       <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 12%;">
+       </div>
+      </div>
+     </div>
+     <div class="mt-4">
+      <div class="flex justify-between text-gray-400">
+       <span>
+        Hard
+       </span>
+       <span>
+        19 / 375
+       </span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+       <div class="bg-red-500 h-2.5 rounded-full" style="width: 5%;">
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="bg-gray-800 p-6 rounded-lg lg:mt-0 mt-6">
+     <h2 class="text-xl font-bold">
+      Recent Activity
+     </h2>
+     <ul class="mt-4 space-y-4">
+      <li class="flex items-center space-x-4">
+       <i class="fas fa-check-circle text-green-500">
+       </i>
+       <div>
+        <p class="font-bold">
+         Solved 'Two Sum' (Easy)
+        </p>
+        <p class="text-gray-400">
+         2 hours ago · Problem Solved
+        </p>
+       </div>
+      </li>
+      <li class="flex items-center space-x-4">
+       <i class="fas fa-trophy text-yellow-500">
+       </i>
+       <div>
+        <p class="font-bold">
+         Participated in Weekly Contest 387
+        </p>
+        <p class="text-gray-400">
+         1 day ago · Contest
+        </p>
+       </div>
+      </li>
+      <li class="flex items-center space-x-4">
+       <i class="fas fa-chart-line text-blue-500">
+       </i>
+       <div>
+        <p class="font-bold">
+         Achieved 30 Days Streak
+        </p>
+        <p class="text-gray-400">
+         2 days ago · Achievement
+        </p>
+       </div>
+      </li>
+      <li class="flex items-center space-x-4">
+       <i class="fas fa-star text-purple-500">
+       </i>
+       <div>
+        <p class="font-bold">
+         Reached 2000 Rating
+        </p>
+        <p class="text-gray-400">
+         3 days ago · Milestone
+        </p>
+       </div>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="bg-gray-800 rounded-lg p-6 mt-6">
+    <h2 class="text-xl font-semibold mb-4">
+     Achievements
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+     <div class="bg-gray-700 rounded-lg p-4 text-center">
+      <div class="text-3xl mb-2">
+       <i class="fas fa-trophy text-yellow-500">
+       </i>
+      </div>
+      <h3 class="text-md font-semibold">
+       Problem Solver
+      </h3>
+      <p class="text-gray-400 text-sm">
+       Solved 300+ Problems
+      </p>
+     </div>
+     <div class="bg-gray-700 rounded-lg p-4 text-center">
+      <div class="text-3xl mb-2">
+       <i class="fas fa-heartbeat text-green-500">
+       </i>
+      </div>
+      <h3 class="text-md font-semibold">
+       Consistent
+      </h3>
+      <p class="text-gray-400 text-sm">
+       30 Days Streak
+      </p>
+     </div>
+     <div class="bg-gray-700 rounded-lg p-4 text-center">
+      <div class="text-3xl mb-2">
+       <i class="fas fa-star text-blue-500">
+       </i>
+      </div>
+      <h3 class="text-md font-semibold">
+       Rising Star
+      </h3>
+      <p class="text-gray-400 text-sm">
+       Top 25% Rating
+      </p>
+     </div>
+     <div class="bg-gray-700 rounded-lg p-4 text-center">
+      <div class="text-3xl mb-2">
+       <i class="fas fa-award text-purple-500">
+       </i>
+      </div>
+      <h3 class="text-md font-semibold">
+       Contest Pro
+      </h3>
+      <p class="text-gray-400 text-sm">
+       Won 5 Contests
+      </p>
+     </div>
+     <div class="bg-gray-700 rounded-lg p-4 text-center">
+      <div class="text-3xl mb-2">
+       <i class="fas fa-code-branch text-pink-500">
+       </i>
+      </div>
+      <h3 class="text-md font-semibold">
+       Helper
+      </h3>
+      <p class="text-gray-400 text-sm">
+       100+ Solutions
+      </p>
+     </div>
+     <div class="bg-gray-700 rounded-lg p-4 text-center">
+      <div class="text-3xl mb-2">
+       <i class="fas fa-book text-brown-500">
+       </i>
+      </div>
+      <h3 class="text-md font-semibold">
+       Expert
+      </h3>
+      <p class="text-gray-400 text-sm">
+       1 Year Active
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
 
-    <div class="text-center mt-3">
-        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
-        <a href="{% url 'homepage' %}" class="btn btn-primary">Back to Home</a>
-    </div>
-</div>
 {% endblock %}
