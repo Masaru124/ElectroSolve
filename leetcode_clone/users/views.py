@@ -5,11 +5,20 @@ from django.contrib.auth.models import User
 from django.views import View
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django.contrib import messages
 from .forms import Signup, LoginForm  
 class SignupView(CreateView):
     form_class = Signup  
-    template_name = 'registration/registration.html'
+    template_name = 'register.html'
     success_url = reverse_lazy('login')
+
+    def form_valid(self,form):
+            response=super().form_valid(form)
+            username=form.cleaned_data['username']
+        
+            messages.success(self.request,f'account created for {username}!')
+            return response
+
 
 class LoginView(View):
     def get(self, request):
@@ -24,8 +33,11 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
-                return redirect('homepage') 
-        return render(request, 'login.html', {'form': form, 'error': 'Invalid credentials'}) 
+                print(f"User authenticated: {username}")  # Debug statement
+            return redirect('homepage')
+        print("Invalid credentials")  # Debug statement
+        return render(request, 'login.html', {'form': form, 'error': 'Invalid credentials'})
+    
 @login_required
 def profile(request):
     return render(request, 'profile.html')  
@@ -33,4 +45,4 @@ def profile(request):
 @login_required
 def user_logout(request):
     logout(request)  
-    return redirect('homepage')  
+    return redirect('homepage')
