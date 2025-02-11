@@ -25,16 +25,16 @@ def check_answer(request, problem_id):
     problem = get_object_or_404(Problem, id=problem_id)  
 
     if request.method == "POST":
-        selected_answer = request.POST.get('answer')  # Get the selected answer
-        is_correct = (selected_answer == problem.correct_answer)  # Check if it's correct
+        selected_answer = request.POST.get('answer')  
+        is_correct = (selected_answer == problem.correct_answer)  
 
-        # Determine the feedback message
+     
         if is_correct:
             feedback_message = "Your answer was correct."
         else:
             feedback_message = f"Your answer was incorrect. The correct answer is {problem.correct_answer}."
 
-        # Render the result back with the feedback message
+        
         return render(request, 'problem_detail.html', {
             'problem': problem,
             'option_a': problem.option_a,
