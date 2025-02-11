@@ -46,3 +46,9 @@ def profile(request):
 def user_logout(request):
     logout(request)  
     return redirect('homepage')
+
+def contests(request):
+    return render(request,'contests.html')
+
+def discuss(request):
+    return render(request,'discuss.html')

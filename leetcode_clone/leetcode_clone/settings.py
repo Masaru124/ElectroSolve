@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'users',  
     'problems',  
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap5',
     
 ]
 
@@ -121,4 +121,4 @@ STATICFILES_DIRS = [BASE_DIR / 'static']  # Ensure this line is present
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

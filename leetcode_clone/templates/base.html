@@ -13,12 +13,12 @@
         <div class="flex items-center space-x-4">
             <i class="fas fa-book text-green-500 text-2xl"></i>
             <span class="ml-2 text-xl font-bold">LeetClone</span>
-            <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
-            <a href="problems.html" class="text-gray-300 hover:text-white">Problems</a>
-            <a href="contests.html" class="text-gray-300 hover:text-white">Contests</a>
-            <a href="discuss.html" class="text-gray-300 hover:text-white">Discuss</a>
+            <a href="{% url 'homepage' %}" class="text-gray-300 hover:text-white">Home</a>
+            <a href="{% url 'problem_list' %}" class="text-gray-300 hover:text-white">Problems</a>
+            <a href="{% url 'contests' %}" class="text-gray-300 hover:text-white">Contests</a>
+            <a href="{% url 'discuss' %}" class="text-gray-300 hover:text-white">Discuss</a>
         </div>
-        <a href="register.html" class="bg-green-500 text-white px-4 py-2 rounded">Sign In</a>
+        <a href="{% url 'login' %}" class="bg-green-500 text-white px-4 py-2 rounded">Sign In</a>
     </nav>
     <div>
     {% block content %}
