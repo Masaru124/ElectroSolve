@@ -1,54 +1,85 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-{% if already_logged_in %}
-        <div class="alert alert-info text-center">
-            You are already logged in. <a href="{% url 'homepage' %}">Go to Homepage</a> or <a href="{% url 'profile' %}">View Profile</a>.
-        </div>
-    {% endif %}
-    <div class="container text-center mt-5">
-        <div class="jumbotron">
-            <h1 class="display-4">Welcome to the LeetCode Clone</h1>
-            <p class="lead">A New Way to Learn ECE</p>
-            <hr class="my-4">
-            <p>[Platform Name] is the best platform to help you enhance your skills, expand your knowledge, and prepare for technical challenges in Electrical and Computer Engineering.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Start Exploring</a>
-        </div>
-
-        <div class="my-5">
-            <h2>Explore our Tools</h2>
-            <p>Explore our well-organized tool to guide you in mastering core ECE topics. Whether you’re just starting or ready for advanced studies, we provide structure to help you make the next leap in your engineering career.</p>
-            <a class="btn btn-primary" href="#" role="button">Get Started</a>
-        </div>
-
-        <div class="my-5">
-            <h2>Problems, Community & Challenges</h2>
-            <p>Over 3,650+ technical problems and exercises for you to practice. Join a vast, active community of ECE enthusiasts and professionals who are all working towards mastering the field. Participate in regular challenges and contests to test your knowledge and earn rewards.</p>
-            <a class="btn btn-primary" href="{% url 'problem_list' %}" role="button">View Problems</a>
-        </div>
-
-        <div class="my-5">
-            <h2>Companies & Candidates</h2>
-            <p>Not only does [Platform Name] help candidates prepare for technical interviews and exams, but we also work with companies to identify top ECE talent. From sponsoring challenges to providing online assessments and training, we support businesses in hiring the best candidates.</p>
-            <a class="btn btn-primary" href="#" role="button">Business Opportunities</a>
-        </div>
-
-        <div class="my-5">
-            <h2>Development Tools for ECE Projects</h2>
-            <p>We support 10+ engineering and programming tools to help you work on embedded systems, microcontrollers, circuit design, and more. At [Platform Name], we are committed to developers, with powerful tools like CircuitSim, FPGA simulation, and virtual oscilloscope to help you develop, test, and debug your own projects.</p>
-            <a class="btn btn-primary" href="#" role="button">Explore Tools</a>
-        </div>
-
-        <div class="my-5">
-            <h2>Courses & Certification for ECE Professionals</h2>
-            <p>Take courses on various ECE topics such as digital circuits, signal processing, microcontroller programming, and data communication. Complete courses and receive certification to boost your career prospects.</p>
-            <a class="btn btn-primary" href="#" role="button">Get Started</a>
-        </div>
-
-        {% if user.is_authenticated %}
-        <div class="my-5">
-            <p>Hello, {{ user.username }}!</p>
-        </div>
-        {% endif %}
+  <header class="text-center py-16 px-4">
+   <h1 class="text-4xl font-bold">
+    Master Your Coding Skills
+   </h1>
+   <p class="text-gray-400 mt-4">
+    Join millions of developers to solve coding challenges, prepare for interviews, and advance your programming skills.
+   </p>
+   <div class="mt-10">
+    <a class="bg-green-500 text-white px-6 py-3 rounded text-lg" href="problems.html">
+     Start Coding Now
+     <i class="fas fa-arrow-right">
+     </i>
+    </a>
+   </div>
+  </header>
+  <section class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 px-4">
+   <div class="bg-gray-800 p-6 rounded-lg text-center md:w-1/3">
+    <i class="fas fa-brain text-purple-500 text-3xl">
+    </i>
+    <h2 class="text-xl font-bold mt-4">
+     2000+ Problems
+    </h2>
+    <p class="text-gray-400 mt-2">
+     A vast collection of coding challenges across different difficulty levels and topics.
+    </p>
+   </div>
+   <div class="bg-gray-800 p-6 rounded-lg text-center md:w-1/3">
+    <i class="fas fa-trophy text-yellow-500 text-3xl">
+    </i>
+    <h2 class="text-xl font-bold mt-4">
+     Weekly Contests
+    </h2>
+    <p class="text-gray-400 mt-2">
+     Participate in coding competitions and climb the global rankings.
+    </p>
+   </div>
+   <div class="bg-gray-800 p-6 rounded-lg text-center md:w-1/3">
+    <i class="fas fa-users text-blue-500 text-3xl">
+    </i>
+    <h2 class="text-xl font-bold mt-4">
+     Active Community
+    </h2>
+    <p class="text-gray-400 mt-2">
+     Connect with fellow developers, share solutions, and learn together.
+    </p>
+   </div>
+  </section>
+  <section class="py-16 px-4">
+   <h2 class="text-3xl font-bold text-center">
+    Latest News
+   </h2>
+   <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="bg-gray-800 p-6 rounded-lg">
+     <img alt="Image of a coding competition with participants focused on their screens" class="w-full h-40 object-cover rounded" height="200" src="https://storage.googleapis.com/a1aa/image/x6GPqlkB8ZYkJVYa-kxJNIFylpYZ2KfP-EZhDEaEehI.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Coding Competition 2025
+     </h3>
+     <p class="text-gray-400 mt-2">
+      Join our upcoming coding competition and test your skills against the best.
+     </p>
     </div>
+    <div class="bg-gray-800 p-6 rounded-lg">
+     <img alt="Image of a new feature announcement with a developer working on a laptop" class="w-full h-40 object-cover rounded" height="200" src="https://storage.googleapis.com/a1aa/image/wF4MRLv1D-0zXx-DWuYKQSxuAjfoH-tzXAfw5rfS3oA.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      New Feature: Code Playground
+     </h3>
+     <p class="text-gray-400 mt-2">
+      We are excited to announce the launch of our new code playground feature.
+     </p>
+    </div>
+    <div class="bg-gray-800 p-6 rounded-lg">
+     <img alt="Image of a community meetup with developers networking" class="w-full h-40 object-cover rounded" height="200" src="https://storage.googleapis.com/a1aa/image/2ZysoKMBdLa3CLgEmGRoKy0j5WcVNr4uHPQTtKbJLLI.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Community Meetup
+     </h3>
+     <p class="text-gray-400 mt-2">
+      Join us for our next community meetup and connect with fellow developers.
+     </p>
+    </div>
+   </div>
+  </section>
 {% endblock %}

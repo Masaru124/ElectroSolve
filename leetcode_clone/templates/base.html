@@ -2,63 +2,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeetCode Clone - Your ECE Learning Platform</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>LeetClone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <div class="logo text-center py-4">
-            <h1>LeetCode Clone</h1>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-book text-green-500 text-2xl"></i>
+            <span class="ml-2 text-xl font-bold">LeetClone</span>
+            <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+            <a href="problems.html" class="text-gray-300 hover:text-white">Problems</a>
+            <a href="contests.html" class="text-gray-300 hover:text-white">Contests</a>
+            <a href="discuss.html" class="text-gray-300 hover:text-white">Discuss</a>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'problem_list' %}">Problems</a>
-                    </li>
-                  
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'homepage' %}">Home</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{% url 'profile' %}">
-                                <i class="fas fa-user-circle" style="font-size: 24px;"></i>
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main content -->
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer bg-dark text-white text-center py-4">
-        <p>&copy; 2025 LeetCode Clone. All rights reserved.</p>
-    </footer>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <a href="register.html" class="bg-green-500 text-white px-4 py-2 rounded">Sign In</a>
+    </nav>
+    <div>
+    {% block content %}
+    {% endblock %}
+</div>
+<footer class="bg-gray-800 text-center py-4 mt-16">
+    <p class="text-gray-500">
+     © 2025 LeetClone. All rights reserved.
+    </p>
+   </footer>
+  </body>
+ </html>

@@ -1,13 +1,98 @@
 {% extends 'base.html' %}  <!-- Extend the base template -->
+{% load static %}
 {% block content %}  <!-- Start the content block -->
-<div class="container">
-    <h1 class="text-center">Problem List</h1>
-    <ul class="list-group">
-        {% for problem in problems %}
-            <li class="list-group-item">
-                <a class="btn btn-link text-primary" href="{% url 'problem_detail' problem.id %}">{{ problem.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+
+    <div class="container mx-auto mt-10 px-4">
+        <div class="w-full bg-gray-800 p-6 rounded-lg">
+            <h2 class="text-xl font-bold mb-4">Problems</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-gray-800">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 bg-gray-700 text-left">Problem Name</th>
+                            <th class="py-2 px-4 bg-gray-700 text-left">Type</th>
+                            <th class="py-2 px-4 bg-gray-700 text-left">Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problems/problem1.html" class="text-green-500 hover:underline">Problem 1</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Easy</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problems/problem2.html" class="text-green-500 hover:underline">Problem 2</a></td>
+                            <td class="py-2 px-4">Data Structure</td>
+                            <td class="py-2 px-4">Medium</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem3.html" class="text-green-500 hover:underline">Problem 3</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Hard</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem4.html" class="text-green-500 hover:underline">Problem 4</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Easy</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem5.html" class="text-green-500 hover:underline">Problem 5</a></td>
+                            <td class="py-2 px-4">Data Structure</td>
+                            <td class="py-2 px-4">Medium</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem6.html" class="text-green-500 hover:underline">Problem 6</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Hard</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem7.html" class="text-green-500 hover:underline">Problem 7</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Easy</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem8.html" class="text-green-500 hover:underline">Problem 8</a></td>
+                            <td class="py-2 px-4">Data Structure</td>
+                            <td class="py-2 px-4">Medium</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem9.html" class="text-green-500 hover:underline">Problem 9</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Hard</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem10.html" class="text-green-500 hover:underline">Problem 10</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Easy</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem11.html" class="text-green-500 hover:underline">Problem 11</a></td>
+                            <td class="py-2 px-4">Data Structure</td>
+                            <td class="py-2 px-4">Medium</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem12.html" class="text-green-500 hover:underline">Problem 12</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Hard</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem13.html" class="text-green-500 hover:underline">Problem 13</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Easy</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem14.html" class="text-green-500 hover:underline">Problem 14</a></td>
+                            <td class="py-2 px-4">Data Structure</td>
+                            <td class="py-2 px-4">Medium</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 px-4"><a href="problem15.html" class="text-green-500 hover:underline">Problem 15</a></td>
+                            <td class="py-2 px-4">Algorithm</td>
+                            <td class="py-2 px-4">Hard</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}  <!-- End the content block -->

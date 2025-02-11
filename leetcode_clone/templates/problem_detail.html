@@ -1,46 +1,25 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<div class="container">
-    <h1 class="text-center">{{ problem.title }}</h1>
-    <p><strong>Description:</strong> {{ problem.description }}</p>
-    <p><strong>Difficulty:</strong> {{ problem.get_difficulty_display }}</p>
-    <form method="POST" action="{% url 'check_answer' problem.id %}">
-        {% csrf_token %}
-        <div class="options">
-            <p><strong>Options:</strong></p>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="option_a" name="answer" value="A" {% if user_answer == 'A' %}checked{% endif %}> 
-                <label class="form-check-label" for="option_a">{{ option_a }}</label>
+    <div class="container mx-auto mt-10 px-4">
+        <div class="w-full bg-gray-800 p-6 rounded-lg">
+            <h1 class="text-3xl font-bold text-center mb-4">Problem 1</h1>
+            <div class="text-lg text-gray-300 mb-4">
+                <p>Here is the detailed description of Problem 1. This problem is an algorithm problem and is classified as easy.</p>
+                <p>Question: Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="option_b" name="answer" value="B" {% if user_answer == 'B' %}checked{% endif %}> 
-                <label class="form-check-label" for="option_b">{{ option_b }}</label>
+            <div class="text-lg text-gray-300">
+                <p class="mb-2">Options:</p>
+                <ul class="list-disc list-inside">
+                    <li class="mb-2"><input type="radio" name="option" id="option1" class="mr-2"><label for="option1">Option 1: [1, 2]</label></li>
+                    <li class="mb-2"><input type="radio" name="option" id="option2" class="mr-2"><label for="option2">Option 2: [2, 3]</label></li>
+                    <li class="mb-2"><input type="radio" name="option" id="option3" class="mr-2"><label for="option3">Option 3: [3, 4]</label></li>
+                    <li class="mb-2"><input type="radio" name="option" id="option4" class="mr-2"><label for="option4">Option 4: [4, 5]</label></li>
+                </ul>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="option_c" name="answer" value="C" {% if user_answer == 'C' %}checked{% endif %}> 
-                <label class="form-check-label" for="option_c">{{ option_c }}</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="option_d" name="answer" value="D" {% if user_answer == 'D' %}checked{% endif %}> 
-                <label class="form-check-label" for="option_d">{{ option_d }}</label>
+            <div class="text-center mt-4">
+                <button class="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-
-    {% if solution_display is not None %}
-        <h3>Solution:</h3>
-        <p>{{ problem.solutions }}</p>
-
-        {% if solution_display %}
-            <p>Your answer was <strong>correct</strong>.</p>
-        {% else %}
-            <p>Your answer was <strong>incorrect</strong>. The correct answer is <strong>{{ problem.correct_answer }}</strong>.</p>
-        {% endif %}
-    {% endif %}
-
-    <a href="{% url 'problem_list' %}" class="btn btn-primary">Back to Problems</a>
-</div>
+    </div>
 {% endblock %}
