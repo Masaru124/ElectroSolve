@@ -17,10 +17,10 @@
      <div class="flex items-center mb-6 relative">
       <div class="relative">
        <img alt="Profile Picture" class="h-24 w-24 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/2PVkSsLZ_pbeB7QvULxwBVNAaPYycQYMGpDatPJhpF4.jpg" width="100"/>
-       <button class="absolute bottom-0 right-0 bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded-full">
-        <i class="fas fa-camera">
-        </i>
-       </button>
+       <button class="absolute bottom-0 right-0 bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded-full" onclick="document.getElementById('fileInput').click()">
+        <i class="fas fa-camera"></i>
+    </button>
+    <input type="file" id="fileInput" class="hidden" accept="image/*"/>
       </div>
       <div class="ml-4">
        <p class="text-lg font-semibold">
