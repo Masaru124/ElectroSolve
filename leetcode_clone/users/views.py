@@ -7,6 +7,8 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .forms import Signup, LoginForm  
+
+
 class SignupView(CreateView):
     form_class = Signup  
     template_name = 'register.html'

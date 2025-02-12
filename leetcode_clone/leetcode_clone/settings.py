@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'problems',  
     'crispy_forms',
     'crispy_bootstrap5',
+    'discussionform.apps.DiscussionformConfig',
     
 ]
 
