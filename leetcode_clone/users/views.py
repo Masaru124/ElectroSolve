@@ -7,6 +7,8 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .forms import Signup, LoginForm  
+from discussionform.models import Room
+
 
 
 class SignupView(CreateView):
@@ -53,7 +55,9 @@ def contests(request):
     return render(request,'contests.html')
 
 def discuss(request):
-    return render(request,'discuss.html')
+    rooms=Room.objects.all()
+    context={'rooms':rooms}
+    return render(request,'discuss.html',context)
 
 def editprofile(request):
     return render(request,'editprofile.html')

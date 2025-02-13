@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from .views import SignupView, profile, user_logout, LoginView ,contests,discuss,editprofile
 
 urlpatterns = [
@@ -9,4 +9,6 @@ urlpatterns = [
     path('contests/' , contests,name='contests'),
     path('discuss/',discuss,name='discuss'),
     path('editprofile/',editprofile,name='editprofile'),
+    path('',include('discussionform.urls'))
+
 ]
