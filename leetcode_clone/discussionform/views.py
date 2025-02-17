@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Room
+from django.contrib.auth.decorators import login_required
 from .forms import RoomForm
 # Create your views here.
 def room(request,pk):
@@ -7,6 +8,7 @@ def room(request,pk):
     context={'rooms':rooms}
     return render(request,'room.html',context)
 
+@login_required
 def room_form(request):
     form=RoomForm()
     context={'form':form}
