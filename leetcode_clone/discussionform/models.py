@@ -6,6 +6,7 @@ class Room(models.Model):
     topic = models.CharField(max_length=255)
     topic_id = models.AutoField(primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rooms')
+    bio = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     first_comment = models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
