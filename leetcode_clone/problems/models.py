@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 class Problem(models.Model):
     title = models.CharField(max_length=200)
@@ -37,7 +37,7 @@ class Problem(models.Model):
         verbose_name_plural = 'Problems'
 
 class QuestionAttempt(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     
     # Tracking the answer that was selected by the user

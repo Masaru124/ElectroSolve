@@ -12,7 +12,7 @@
     <nav class="bg-gray-800 p-4 flex justify-between items-center">
         <div class="flex items-center space-x-4">
             <i class="fas fa-book text-green-500 text-2xl"></i>
-            <span class="ml-2 text-xl font-bold">LeetClone</span>
+            <a href="{% url 'homepage' %}" class="ml-2 text-xl font-bold">LeetClone</a>
             <a href="{% url 'homepage' %}" class="text-gray-300 hover:text-white">
                 <i class="fas fa-home">
                 </i>
@@ -31,18 +31,33 @@
                 Discuss</a>
         </div>
         <div class="flex items-center space-x-4">
-            <a href="{% url 'profile' %}" >
-             <i class="fas fa-user">
-             </i>
-            </a>
-            <a href="{% url 'login' %}" class="bg-green-500 text-white px-4 py-2 rounded">
-                <i class="fas fa-user-alt"></i>
-             Sign In
-            </a>
-           </div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" >
+                 <i class="fas fa-user"></i>
+                </a>
+                <a href="{% url 'logout' %}" class="bg-red-600 text-white px-4 py-2 rounded">
+                    <i class="fas fa-sign-out-alt"></i>
+                 Logout
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="bg-green-500 text-white px-4 py-2 rounded">
+                    <i class="fas fa-user-alt"></i>
+                 Sign In
+                </a>
+            {% endif %}
+        </div>
     </nav>
-    <div>
-    {% block content %}
+    <div class="container mx-auto px-4">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} p-4 mb-4 rounded">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}
     {% endblock %}
 </div>
 <footer class="bg-gray-800 text-center py-4 mt-16">

@@ -16,7 +16,7 @@
      </div>
      <div class="flex items-center mb-6 relative">
       <div class="relative">
-       <img alt="Profile Picture" class="h-24 w-24 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/2PVkSsLZ_pbeB7QvULxwBVNAaPYycQYMGpDatPJhpF4.jpg" width="100"/>
+       <img alt="Profile Picture" class="h-24 w-24 rounded-full" height="100" src="{{ profile.profile_picture.url }}" width="100"/>
        <button class="absolute bottom-0 right-0 bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded-full" onclick="document.getElementById('fileInput').click()">
         <i class="fas fa-camera"></i>
     </button>
@@ -31,87 +31,21 @@
        </p>
       </div>
      </div>
-     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div>
-       <label class="block text-gray-400 mb-2">
-        Full Name *
-       </label>
-       <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="John Developer" required/>
+     <form method="POST">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+       {{ form.as_p }}
       </div>
-      <div>
-       <label class="block text-gray-400 mb-2">
-        Username *
-       </label>
-       <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="johndeveloper" required/>
-      </div>
-      <div>
-       <label class="block text-gray-400 mb-2">
-        Email *
-       </label>
-       <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="email" placeholder="john@example.com" required/>
-      </div>
-      <div>
-       <label class="block text-gray-400 mb-2">
-        Company
-       </label>
-       <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="Tech Corp"/>
-      </div>
-      <div class="md:col-span-2">
-       <label class="block text-gray-400 mb-2">
-        Bio
-       </label>
-       <textarea class="w-full p-2 bg-gray-700 rounded border border-gray-600" rows="4" placeholder="Full Stack Developer | Problem Solving Enthusiast"></textarea>
-      </div>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-      <div>
-       <label class="block text-gray-400 mb-2">
-        Location
-       </label>
-       <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="San Francisco, CA"/>
-      </div>
-      <div>
-       <label class="block text-gray-400 mb-2">
-        Website
-       </label>
-       <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="https://johndeveloper.com"/>
-      </div>
-     </div>
-     <div class="mt-6">
-      <h3 class="text-lg font-medium text-gray-300">
-       Social Links
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-       <div>
-        <label class="block text-gray-400 mb-2">
-         GitHub
-        </label>
-        <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="johndeveloper"/>
-       </div>
-       <div>
-        <label class="block text-gray-400 mb-2">
-         Twitter
-        </label>
-        <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="johndeveloper"/>
-       </div>
-       <div>
-        <label class="block text-gray-400 mb-2">
-         LinkedIn
-        </label>
-        <input class="w-full p-2 bg-gray-700 rounded border border-gray-600" type="text" placeholder="johndeveloper"/>
-       </div>
-      </div>
-     </div>
      <div class="mt-6 flex justify-end">
       <a href="{% url 'profile' %}" class="text-gray-300 px-4 py-2 mr-4">
        Cancel
       </a>
-      <a href="{% url 'profile' %}"  class="bg-green-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" href="profile.html">
-       <i class="fas fa-save mr-2">
-       </i>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+       <i class="fas fa-save mr-2"></i>
        Save Changes
-      </a>
+      </button>
      </div>
+     </form>
     </div>
    </div>
 
