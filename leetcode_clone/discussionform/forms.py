@@ -10,3 +10,4 @@ class RoomForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter a short bio about the room', 'rows': 3}),
             'first_comment': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write the first comment...', 'rows': 2}),
         }
+        
