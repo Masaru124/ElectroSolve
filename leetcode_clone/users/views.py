@@ -48,11 +48,20 @@ class LoginView(View):
 @login_required
 def profile(request):
     user = request.user
+    profile = user.profile
     context = {
         'user': user,
-        'profile': user.profile
+        'profile': profile,
+        'problems_solved': profile.problems_solved,
+        'streak': profile.streak,
+        'max_streak': profile.max_streak,
+        'rating': profile.rating,
+        'easy_solved': profile.easy_solved,
+        'medium_solved': profile.medium_solved,
+        'hard_solved': profile.hard_solved,
     }
     return render(request, 'profile.html', context)
+
 
 @login_required
 def user_logout(request):

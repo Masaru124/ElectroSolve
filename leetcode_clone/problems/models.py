@@ -67,3 +67,23 @@ class QuestionAttempt(models.Model):
         else:
             self.is_correct = False
         self.save()
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+@receiver(post_save, sender=QuestionAttempt)
+def update_user_stats(sender, instance, created, **kwargs):
+    """ Update profile stats when a problem is attempted """
+    if created:
+        profile = instance.user.profile
+        profile.problems_solved += 1
+        profile.update_streak()
+
+        if instance.problem.difficulty == 'easy':
+            profile.easy_solved += 1
+        elif instance.problem.difficulty == 'medium':
+            profile.medium_solved += 1
+        else:
+            profile.hard_solved += 1
+        
+        profile.save()
