@@ -1,1 +1,4 @@
-web: gunicorn leetcode_clone.wsgi --log-file -
+# Original command with invalid bind option
+# web: gunicorn leetcode_clone.wsgi --bind  0.0.0.0:8000:$PORT --log-file -
+
+web: gunicorn leetcode_clone.wsgi --bind 0.0.0.0:$PORT --log-file -

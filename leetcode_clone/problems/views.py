@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .models import Problem
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def homepage(request):
     return render(request, 'homepage.html')
 
